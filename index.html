@@ -1,0 +1,62 @@
+!-- Codigo que hace redirección automática después de 5 segundos
+ Contiene imagenes y texto y un contador de visitas (no necesita servidor ni base de datos) -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de redirección</title>
+    <!-- Redirección automática después de 5 segundos -->
+    <meta http-equiv="refresh" content="5; url=https://wa.link/sfmzz5">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .contador {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Gracias por visitarnos!</h1>
+        <p>Serás redirigido automáticamente en 5 segundos...</p>
+        <img src="tu-imagen.jpg" alt="Imagen descriptiva">
+        <p>Si no ocurre automáticamente, haz clic <a href="https://wa.link/sfmzz5">aquí</a>.</p>
+        <div class="contador">
+            <p>Esta página ha sido visitada <span id="visit-count">0</span> veces por ti.</p>
+        </div>
+    </div>
+    <script>
+        // Recuperar y actualizar el contador de visitas
+        const visitCountKey = "visitCount"; // Clave para almacenar el número de visitas
+        let visitCount = localStorage.getItem(visitCountKey);
+
+        if (visitCount) {
+            visitCount = parseInt(visitCount) + 1;
+        } else {
+            visitCount = 1; // Primera visita
+        }
+
+        // Guardar el nuevo valor en localStorage
+        localStorage.setItem(visitCountKey, visitCount);
+
+        // Mostrar el contador de visitas en la página
+        document.getElementById("visit-count").textContent = visitCount;
+    </script>
+</body>
+</html>
